@@ -1,0 +1,37 @@
+@import 'inspinia';
+
+.navbar-static-top{
+    margin-bottom: 0;
+}
+
+.box-hover .btn-hover a { 
+  visibility: hidden; 
+}
+.box-hover:hover .btn-hover a { 
+  visibility: visible; 
+}
+.post-avatar {
+  padding: 0 0 0 0;
+}
+.post-avatar img {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+.post-avatar .media-body a {
+  font-size: 14px;
+  display: block;
+}
+.profile-element img.img-circle {
+  width: 48px;
+  height: 48px;
+}
+.profile-action {
+  margin: 15px 15px 0 0;
+}
+.modal-body {
+  padding: 15px;
+}
+.social-avatar .media-body a {
+  display:inline;
+}

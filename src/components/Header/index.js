@@ -7,71 +7,26 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as actions from '../../actions/index';
-import { browse, dashboard } from '../../constants/pathnames';
-
-function Logo() {
-  return (
-    <div>
-      <Link to="/">
-        <h1>Facebook-Redux</h1>
-      </Link>
-    </div>
-  );
-}
-
-function MenuItem({ linkText }) {
-  const linkClass = classNames('menu-item');
-
-  return (
-    <Link to="/" className={linkClass}>
-      {linkText}
-    </Link>
-  );
-}
-
-function Login({ onLogin }) {
-  return (
-    <Link onClick={onLogin} to={dashboard}>
-      Login
-    </Link>
-  );
-}
-
-function Logout({ onLogout }) {
-  return (
-    <Link onClick={onLogout} to={browse}>
-      Logout
-    </Link>
-  );
-}
-
-function SessionAction({ currentUser, onLogin, onLogout }) {
-  return (
-    <div>
-      { currentUser ? <Logout onLogout={onLogout} /> : <Login onLogin={onLogin} /> }
-    </div>
-  );
-}
-
-function MenuList() {
-  return (
-    <div>
-      {map((text, key) => {
-        const menuItemProps = { text, key };
-        return <MenuItem {...menuItemProps} />;
-      }, ['News Feed', 'Messenger'])}
-    </div>
-  );
-}
 
 function Header({ currentUser, onLogin, onLogout }) {
   return (
-    <div className="header">
-      <div className="header-content">
-        <Logo />
-        <MenuList />
-        <SessionAction currentUser={currentUser} onLogin={onLogin} onLogout={onLogout} />
-      </div>
+    <div className="row border-bottom white-bg">
+      <nav className="navbar navbar-static-top" role="navigation">
+        <div className="navbar-header">
+          <Link className="navbar-minimalize minimalize-styl-2 btn btn-primary" to="/"><i className="fa fa-bars"></i> </Link>
+          <form role="search" className="navbar-form-custom">
+            <div className="form-group">
+              <input type="text" placeholder="Search for something..." className="form-control" name="top-search" id="top-search"/>
+            </div>
+          </form>
+        </div>
+        <ul className="nav navbar-top-links navbar-right">
+          <li>
+            <span className="m-r-sm text-muted welcome-message">Welcome to Facebook Redux.</span>
+          </li>
+          <li><Link onClick={onLogout} to="/"><i className="fa fa-sign-out"></i> Log out</Link></li>
+        </ul>
+      </nav>
     </div>
   );
 }

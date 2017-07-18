@@ -28,7 +28,7 @@ module.exports = {
       './node_modules/bootstrap/dist/css/bootstrap.css',
       './node_modules/font-awesome/css/font-awesome.css',
     ],
-    style: './styles/index.scss',
+    style: './styles/style.scss',
   },
   module: {
     loaders: [{
