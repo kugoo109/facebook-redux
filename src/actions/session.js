@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie';
-import * as actionTypes from '../../constants/actionTypes';
+import * as actionTypes from '../constants/actionTypes';
 
 function setSession(session) {
   return {

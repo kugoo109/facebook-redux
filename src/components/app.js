@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import Navbar from '../../components/Navbar';
-import NewsFeed from '../../components/NewsFeed';
+import Header from './template/header';
+import Footer from './template/footer';
+import Navbar from './template/navbar';
+import NewsFeed from './newsfeed';
 
 export default class App extends React.Component {
   constructor(props) {

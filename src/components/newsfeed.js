@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import map from '../../services/map';
+import map from '../services/map';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as actions from '../../actions/index';
-import { browse, dashboard } from '../../constants/pathnames';
+import * as actions from '../actions/index';
+import { browse, dashboard } from '../constants/pathnames';
 
 function NewsFeed({ currentUser, onLogin, onLogout }) {
   return (
