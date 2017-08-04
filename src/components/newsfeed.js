@@ -19,7 +19,7 @@ function NewsFeed({ currentUser, onLogin, onLogout }) {
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.session.user
+    currentUser: state.auth.user
   };
 }
 

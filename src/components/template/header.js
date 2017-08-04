@@ -1,14 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import map from '../../services/map';
-import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as actions from '../../actions/index';
 
-function Header({ currentUser, onLogin, onLogout }) {
+function Header({ logout }) {
   return (
     <div className="row border-bottom white-bg">
       <nav className="navbar navbar-static-top" role="navigation">
@@ -24,7 +22,7 @@ function Header({ currentUser, onLogin, onLogout }) {
           <li>
             <span className="m-r-sm text-muted welcome-message">Welcome to Facebook Redux.</span>
           </li>
-          <li><Link onClick={onLogout} to="/"><i className="fa fa-sign-out"></i> Log out</Link></li>
+          <li><Link onClick={() => logout()} to="/"><i className="fa fa-sign-out"></i> Log out</Link></li>
         </ul>
       </nav>
     </div>
@@ -33,21 +31,17 @@ function Header({ currentUser, onLogin, onLogout }) {
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.session.user
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    onLogin: bindActionCreators(actions.login, dispatch),
-    onLogout: bindActionCreators(actions.logout, dispatch),
+    logout: bindActionCreators(actions.logout, dispatch),
   };
 }
 
 Header.propTypes = {
-  currentUser: PropTypes.object,
-  onLogin: PropTypes.func,
-  onLogout: PropTypes.func,
+  logout: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -1,12 +1,5 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import map from '../../services/map';
-import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
-import * as actions from '../../actions/index';
 
 function Footer() {
   return (
@@ -20,17 +13,4 @@ function Footer() {
   );
 }
 
-function mapStateToProps(state) {
-  return {
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-  };
-}
-
-Footer.propTypes = {
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+export default Footer;
