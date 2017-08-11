@@ -8,6 +8,7 @@ import Login from './auth/login';
 // Import pages
 import Main from './template/main';
 import NewsFeed from './newsfeed';
+import Profile from './profile';
 
 // Import higher order components
 import TemplateRoute from './route';
@@ -35,6 +36,7 @@ export default class App extends React.Component {
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
         <TemplateRoute exact path="/" component={NewsFeed} template={Main} requireAuth />
+        <TemplateRoute exact path="/profile" component={Profile} template={Main} requireAuth />
         <Redirect to="/" />
       </Switch>
     );
