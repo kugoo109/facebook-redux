@@ -9,7 +9,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/index';
 import { browse, dashboard } from '../constants/pathnames';
 
-function NewsFeed({ currentUser, onLogin, onLogout }) {
+function Profile({ currentUser, onLogin, onLogout }) {
   return (
     <div className="row">
       Profile page
@@ -30,10 +30,10 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-NewsFeed.propTypes = {
+Profile.propTypes = {
   currentUser: PropTypes.object,
   onLogin: PropTypes.func,
   onLogout: PropTypes.func,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewsFeed);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
