@@ -4,6 +4,12 @@ import * as actionTypes from '../constants/actionTypes';
 import history from '../services/history';
 
 const serviceBase = 'http://localhost:3000/api/v1/';
+const config = {
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+};
 
 function setUser(user) {
   return {
@@ -18,15 +24,18 @@ export function resetAuth() {
   };
 }
 
-export const checkme = () => (dispatch) => {
-  axios.get(serviceBase + 'auth/checkme')
+export const checkme = (returnPath) => (dispatch) => {
+  axios.get(serviceBase + 'auth/checkme', config)
     .then((results) => {
-      dispatch(setUser(results.data));
+      if(results.data) {
+        dispatch(setUser(results.data));
+        navigateTo(returnPath || '/');
+      }
     });
 };
 
 export const register = (user) => (dispatch) => {
-  axios.post(serviceBase + 'auth/signup', user)
+  axios.post(serviceBase + 'auth/signup', user, config)
     .then((results) => {
       dispatch(setUser(results.data));
       navigateTo('/');
@@ -34,7 +43,7 @@ export const register = (user) => (dispatch) => {
 };
 
 export const login = ({ username, password }) => (dispatch) => {
-  axios.post(serviceBase + 'auth/signin', { username, password })
+  axios.post(serviceBase + 'auth/signin', { username, password }, config)
     .then((results) => {
       dispatch(setUser(results.data));
       navigateTo('/');
@@ -42,7 +51,7 @@ export const login = ({ username, password }) => (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
-  axios.post(serviceBase + 'auth/signout')
+  axios.post(serviceBase + 'auth/signout', null, config)
     .then(() => {
       dispatch(resetAuth());
       navigateTo('/login');
