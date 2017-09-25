@@ -1,11 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import * as actions from '../../actions/index';
 
 function TemplateComponent(Template, Component, requireAuth) {
   class Authentication extends React.Component {
     componentWillMount() {
       if (requireAuth && !this.props.auth.user) {
+        const returnPath = this.props.location.pathname;
+        this.props.checkme(returnPath);
         this.context.router.history.push('/login');
       }
     }
@@ -33,11 +38,18 @@ function TemplateComponent(Template, Component, requireAuth) {
     return { auth: state.auth };
   }
 
+  function mapDispatchToProps(dispatch) {
+    return {
+      checkme: bindActionCreators(actions.checkme, dispatch),
+    };
+  }
+  
   Authentication.contextTypes = {
     router: PropTypes.object,
+    checkme: PropTypes.func,
   };
 
-  return connect(mapStateToProps)(Authentication);
+  return connect(mapStateToProps, mapDispatchToProps)(Authentication);
 }
 
 export default TemplateComponent;
