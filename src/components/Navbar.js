@@ -45,8 +45,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-Navbar.propTypes = {
-  currentUser: PropTypes.object,
-};
-
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

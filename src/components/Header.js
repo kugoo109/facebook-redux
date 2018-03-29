@@ -40,8 +40,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-Header.propTypes = {
-  logout: PropTypes.func,
-};
-
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

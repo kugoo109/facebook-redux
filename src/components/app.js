@@ -2,16 +2,16 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router';
 
 // Import authentication related pages
-import Register from './auth/register';
-import Login from './auth/login';
+import Register from './Register';
+import Login from './Login';
 
 // Import pages
-import Main from './template/main';
-import NewsFeed from './newsfeed';
-import Profile from './profile';
+import Main from './Main';
+import NewsFeed from './NewsFeed';
+import Profile from './Profile';
 
 // Import higher order components
-import TemplateRoute from './route';
+import TemplateRoute from './TemplateRoute';
 
 export default class App extends React.Component {
   constructor(props) {

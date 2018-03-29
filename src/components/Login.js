@@ -5,7 +5,7 @@ import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as actions from '../../actions/index';
+import * as actions from '../actions/index';
 
 const form = reduxForm({
   form: 'login',
@@ -59,9 +59,5 @@ function mapDispatchToProps(dispatch) {
     login: bindActionCreators(actions.login, dispatch),
   };
 }
-
-Login.propTypes = {
-  login: PropTypes.func
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(form(Login));

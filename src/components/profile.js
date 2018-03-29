@@ -30,10 +30,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-Profile.propTypes = {
-  currentUser: PropTypes.object,
-  onLogin: PropTypes.func,
-  onLogout: PropTypes.func,
-};
-
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
