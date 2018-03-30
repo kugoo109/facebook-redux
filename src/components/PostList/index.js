@@ -1,17 +1,16 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import map from '../../services/map';
 
-import PostInput from './PostInput';
 import Post from './Post';
 
-function PostList({ user, posts, addPost }) {
+function PostList({ posts }) {
   return (
     <div>
-      <PostInput user={user} addPost={addPost} />
-      {map((post) => {
-        return <Post key={post._id} post={post} />;
-      }, posts)}
+      {
+        map((post) => {
+          return <Post key={post._id} post={post} />;
+        }, posts)
+      }
     </div>
   );
 }

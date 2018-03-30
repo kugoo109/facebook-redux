@@ -1,6 +1,16 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../../actions/index';
 import { Link } from 'react-router-dom';
+
+const mapStateToProps = state => ({
+  currentUser: state.auth.user
+});
+
+const mapDispatchToProps = dispatch => ({
+  addPost: bindActionCreators(actions.addPost, dispatch)
+});
 
 class PostInput extends React.Component {
   constructor(props) {
@@ -17,13 +27,17 @@ class PostInput extends React.Component {
     };
 
     this.handleClick = () => {
-      this.props.addPost(this.state.content, this.props.user._id);
+      const post = {
+        content: this.state.content,
+        postAt: this.props.postAt._id
+      };
+      this.props.addPost(post);
+      this.setState({ content: '' });
     };
   }
 
   render() {
-    const { user } = this.props;
-
+    const { currentUser } = this.props;
     return (
       <div className="ibox">
         <div className="ibox-title">
@@ -32,13 +46,14 @@ class PostInput extends React.Component {
         <div>
           <div className="ibox-content">
             <div className="post-avatar">
-              <Link className="pull-left" to="/profile">
-                <img alt="image" src={user.profileImageURL}/>
+              <Link className="pull-left" to={'/profile/' + currentUser.username}>
+                <img alt="" src={currentUser.profileImageURL}/>
               </Link>
               <div className="media-body">
                 <textarea
                   className="form-control"
                   placeholder="What's on your mind?"
+                  value={this.state.content}
                   onChange={this.updateState('content')}
                 ></textarea>
                 <div className="m-t-sm pull-right">
@@ -56,4 +71,4 @@ class PostInput extends React.Component {
   }
 }
 
-export default PostInput;
+export default connect(mapStateToProps, mapDispatchToProps)(PostInput);

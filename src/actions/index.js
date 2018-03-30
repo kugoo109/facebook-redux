@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import { checkme, register, login, logout } from './auth';
-import { getPosts, addPost } from './postlist';
+import { getPosts, addPost, updatePost, deletePost, addComment, deleteComment } from './postList';
 /* eslint-enable max-len */
 
 export {
@@ -10,4 +10,8 @@ export {
   logout,
   getPosts,
   addPost,
+  updatePost,
+  deletePost,
+  addComment,
+  deleteComment
 };

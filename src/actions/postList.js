@@ -9,25 +9,46 @@ const config = {
   },
 };
 
-function setPosts(posts) {
-  return {
-    type: actionTypes.SET_POSTS,
-    posts
-  };
-}
-
 export const getPosts = (postAt) => (dispatch) => {
   const params = postAt ? '?postAt=' + postAt : '';
 
   axios.get(serviceBase + 'posts' + params, config)
     .then((results) => {
-      dispatch(setPosts(results.data));
+      dispatch({ type: actionTypes.SET_POSTS, posts: results.data });
     });
 };
 
-export const addPost = (content, postAt) => (dispatch) => {
-  axios.post(serviceBase + 'posts', { content, postAt }, config)
+export const addPost = (post) => (dispatch) => {
+  axios.post(serviceBase + 'posts', post, config)
     .then((results) => {
-      alert('success');
+      dispatch({ type: actionTypes.ADD_POST, post: results.data });
+    });
+};
+
+export const updatePost = (post) => (dispatch) => {
+  axios.put(serviceBase + 'posts', post, config)
+    .then((results) => {
+      dispatch({ type: actionTypes.UPDATE_POST, post: results.data });
+    });
+};
+
+export const deletePost = (post) => (dispatch) => {
+  axios.delete(serviceBase + 'posts/' + post._id, config)
+    .then((results) => {
+      dispatch({ type: actionTypes.DELETE_POST, postId: post._id });
+    });
+};
+
+export const addComment = (comment) => (dispatch) => {
+  axios.post(serviceBase + 'comments', comment, config)
+    .then((results) => {
+      dispatch({ type: actionTypes.UPDATE_POST, post: results.data });
+    });
+};
+
+export const deleteComment = (comment) => (dispatch) => {
+  axios.delete(serviceBase + 'comments/' + comment._id, config)
+    .then((results) => {
+      dispatch({ type: actionTypes.UPDATE_POST, post: results.data });
     });
 };
