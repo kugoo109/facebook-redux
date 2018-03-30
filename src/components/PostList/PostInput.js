@@ -37,11 +37,11 @@ class PostInput extends React.Component {
   }
 
   render() {
-    const { currentUser } = this.props;
+    const { title, currentUser } = this.props;
     return (
       <div className="ibox">
         <div className="ibox-title">
-          <h5><i className="fa fa-pencil"></i> Create a Post</h5>
+          <h5><i className="fa fa-pencil"></i> {title}</h5>
         </div>
         <div>
           <div className="ibox-content">

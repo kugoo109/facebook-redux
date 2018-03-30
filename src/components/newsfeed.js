@@ -27,7 +27,7 @@ class NewsFeed extends React.Component {
     return (
       <div className="row">
         <div className="col-lg-7">
-          <PostInput postAt={currentUser} />
+          <PostInput title="Create a Post" postAt={currentUser} />
           <PostList posts={posts}/>
         </div>
       </div>
